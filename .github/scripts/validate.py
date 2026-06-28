@@ -203,10 +203,17 @@ for token in tokens:
         except Exception as e:
             fail(f"{label}: Cannot read logo image: {e}")
 
-    # logoURI must match expected pattern
-    expected_uri = f"https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/{addr}.png"
-    if token["logoURI"] != expected_uri:
-        warn(f"{label}: logoURI should be:\n  `{expected_uri}`")
+    # logoURI must point to this repo (no IPFS, no external links)
+    GITHUB_BASE = "https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/"
+    logo_uri = token.get("logoURI", "")
+    expected_uri = f"{GITHUB_BASE}{addr}.png"
+    if not logo_uri.startswith(GITHUB_BASE):
+        fail(f"{label}: logoURI must be a GitHub raw URL from this repo.\n"
+             f"  Expected: `{expected_uri}`\n"
+             f"  Got: `{logo_uri}`\n"
+             f"  External links (IPFS, HTTP, etc.) are not allowed.")
+    elif logo_uri != expected_uri:
+        warn(f"{label}: logoURI should be `{expected_uri}`")
     else:
         ok(f"{label}: logoURI format correct")
 
