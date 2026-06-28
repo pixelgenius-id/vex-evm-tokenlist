@@ -11,7 +11,7 @@ import time
 import requests
 from PIL import Image
 
-VEX_EVM_RPC   = "https://vexascan.com/evm"
+VEX_EVM_RPC   = "https://vexascan.com/rpc"
 SWAP_API      = "https://vexascan.com/api/v1/swap"
 CHAIN_ID      = 6736
 MIN_LIQUIDITY = 500   # minimum VEX in pool
