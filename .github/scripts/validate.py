@@ -30,6 +30,24 @@ def fail(msg):
 def warn(msg): results.append(f"⚠️ {msg}")
 def info(msg): results.append(f"ℹ️ {msg}")
 
+# ── 0. Load base branch tokenlist (detect removed tokens) ─────────────────────
+import subprocess
+
+def load_base_tokenlist():
+    try:
+        out = subprocess.check_output(
+            ["git", "show", "origin/main:tokenlist.json"],
+            stderr=subprocess.DEVNULL
+        )
+        return json.loads(out)
+    except Exception:
+        return None
+
+base_data = load_base_tokenlist()
+base_addresses = set()
+if base_data:
+    base_addresses = {t["address"].lower() for t in base_data.get("tokens", [])}
+
 # ── 1. Parse tokenlist.json ────────────────────────────────────────────────────
 try:
     with open("tokenlist.json") as f:
@@ -47,6 +65,19 @@ else:
 
 tokens = data.get("tokens", [])
 info(f"Total tokens in list: {len(tokens)}")
+
+# ── 1b. Removal guard ─────────────────────────────────────────────────────────
+results.append("\n### Removal Guard")
+if base_addresses:
+    pr_addresses = {t.get("address", "").lower() for t in tokens}
+    removed = base_addresses - pr_addresses
+    if removed:
+        for addr in sorted(removed):
+            fail(f"Token `{addr}` was removed — existing tokens cannot be delisted via PR")
+    else:
+        ok(f"No existing tokens removed ({len(base_addresses)} checked)")
+else:
+    warn("Could not load base branch — skipping removal check")
 
 # ── 2. Per-token validation ────────────────────────────────────────────────────
 REQUIRED_FIELDS = {"chainId", "address", "name", "symbol", "decimals", "logoURI"}
