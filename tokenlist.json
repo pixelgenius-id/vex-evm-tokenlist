@@ -44,6 +44,13 @@
       "symbol": "WIND",
       "decimals": 8,
       "logoURI": "https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/0x5aacd3bc3febbb5db715cc67f09bc8d0d33e9b3e.png"
+    },
+    {
+      "chainId": 6736,
+      "address": "0x3a59c1dd7535cfc1181a758758e06cd98a175bc8",
+      "name": "Wrapped USDT",
+      "symbol": "wUSDT",
+      "decimals": 18
     }
   ]
 }
