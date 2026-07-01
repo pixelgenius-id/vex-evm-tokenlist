@@ -50,7 +50,8 @@
       "address": "0x3a59c1dd7535cfc1181a758758e06cd98a175bc8",
       "name": "Wrapped USDT",
       "symbol": "wUSDT",
-      "decimals": 18
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/0x3a59c1dd7535cfc1181a758758e06cd98a175bc8.png"
     }
   ]
 }
