@@ -36,6 +36,13 @@
       "symbol": "WVEX",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/0x7b798419f963a253bd3e83d7ed8ca33090c3b890.png"
+    },
+    {
+      "chainId": 6736,
+      "address": "0x5aacd3bc3febbb5db715cc67f09bc8d0d33e9b3e",
+      "name": "WIND",
+      "symbol": "WIND",
+      "decimals": 8
     }
   ]
 }
