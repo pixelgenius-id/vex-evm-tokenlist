@@ -2,10 +2,10 @@
   "name": "VEX EVM Token List",
   "version": {
     "major": 1,
-    "minor": 0,
+    "minor": 1,
     "patch": 0
   },
-  "timestamp": "2026-06-28T00:00:00.000Z",
+  "timestamp": "2026-10-24T17:07:00.000Z",
   "keywords": [
     "vex",
     "evm",
@@ -52,6 +52,13 @@
       "symbol": "wUSDT",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/pixelgenius-id/vex-evm-tokenlist/main/assets/0x3a59c1dd7535cfc1181a758758e06cd98a175bc8.png"
+    },
+    {
+      "chainId": 6736,
+      "address": "0xb639f2d1a232e9c94432d03638a953937809f060",
+      "name": "ZORU",
+      "symbol": "ZORU",
+      "decimals": 8
     }
   ]
 }
